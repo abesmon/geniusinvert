@@ -1,13 +1,17 @@
 <!doctype html>
 <html>
 <head>
-    <title>Genius Inverted Wiki</title>
+    <title>{{ _('Genius Inverted Wiki') }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
 <body class="container py-3">
 <nav>
-    <a href="/">Home</a> |
-    <a href="/article/new">New Article</a>
+    <a href="/">{{ _('Home') }}</a> |
+    <a href="/article/new">{{ _('New Article') }}</a>
+    <span class="float-end">
+        <a href="?lang=en">EN</a> |
+        <a href="?lang=ru">RU</a>
+    </span>
 </nav>
 <hr>
 {% block content %}{% endblock %}
