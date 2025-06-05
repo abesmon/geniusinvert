@@ -28,8 +28,18 @@ def edit_article(article_id=None):
         article.title = request.form['title']
         article.content = request.form['content']
         article.loss_index = request.form.get('loss_index')
-        article.meme_potential = request.form.get('meme_potential')
-        article.reality_disruption = request.form.get('reality_disruption')
+
+        meme_val = request.form.get('meme_potential')
+        try:
+            article.meme_potential = float(meme_val) if meme_val not in (None, '', 'None') else None
+        except ValueError:
+            article.meme_potential = None
+
+        rd_val = request.form.get('reality_disruption')
+        try:
+            article.reality_disruption = int(rd_val) if rd_val not in (None, '', 'None') else None
+        except ValueError:
+            article.reality_disruption = None
         article.legal_risk = request.form.get('legal_risk')
         article.ethical_toxicity = request.form.get('ethical_toxicity')
         article.scalability = request.form.get('scalability')

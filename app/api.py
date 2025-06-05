@@ -20,11 +20,23 @@ def create_article():
     if not data or 'title' not in data or 'content' not in data:
         abort(400)
     article = Article(title=data['title'], content=data['content'])
+
     for field in ['loss_index', 'meme_potential', 'reality_disruption', 'legal_risk',
                   'ethical_toxicity', 'scalability', 'user_retention',
                   'implementation_cost', 'side_effect_index', 'inverse_genius_rating']:
         if field in data:
-            setattr(article, field, data[field])
+            value = data[field]
+            if field == 'meme_potential':
+                try:
+                    value = float(value) if value not in (None, '', 'None') else None
+                except (TypeError, ValueError):
+                    value = None
+            elif field == 'reality_disruption':
+                try:
+                    value = int(value) if value not in (None, '', 'None') else None
+                except (TypeError, ValueError):
+                    value = None
+            setattr(article, field, value)
     db.session.add(article)
     db.session.commit()
     return jsonify(serialize_article(article)), 201
