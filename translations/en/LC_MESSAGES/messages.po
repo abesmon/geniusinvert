@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Language: en\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Genius Inverted Wiki"
+msgstr "Genius Inverted Wiki"
+
+msgid "Home"
+msgstr "Home"
+
+msgid "New Article"
+msgstr "New Article"
+
+msgid "Random article:"
+msgstr "Random article:"
+
+msgid "Latest Articles"
+msgstr "Latest Articles"
+
+msgid "No articles yet"
+msgstr "No articles yet"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "New"
+msgstr "New"
+
+msgid "Article"
+msgstr "Article"
+
+msgid "Title"
+msgstr "Title"
+
+msgid "Content"
+msgstr "Content"
+
+msgid "Loss Index"
+msgstr "Loss Index"
+
+msgid "Meme Potential"
+msgstr "Meme Potential"
+
+msgid "Reality Disruption"
+msgstr "Reality Disruption"
+
+msgid "Legal Risk"
+msgstr "Legal Risk"
+
+msgid "Ethical Toxicity"
+msgstr "Ethical Toxicity"
+
+msgid "Scalability"
+msgstr "Scalability"
+
+msgid "User Retention"
+msgstr "User Retention"
+
+msgid "Implementation Cost"
+msgstr "Implementation Cost"
+
+msgid "Side Effect Index"
+msgstr "Side Effect Index"
+
+msgid "Inverse Genius Rating"
+msgstr "Inverse Genius Rating"
+
+msgid "Save"
+msgstr "Save"
+
+msgid "Characteristics"
+msgstr "Characteristics"
+
+msgid "Versions"
+msgstr "Versions"
+
+msgid "Version"
+msgstr "Version"
