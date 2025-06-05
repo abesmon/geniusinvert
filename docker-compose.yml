@@ -5,4 +5,6 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ${PWD}/data.db:/app/instance/data.db
+      - type: bind
+        source: ./data.db
+        target: /app/instance/data.db
