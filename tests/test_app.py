@@ -1,7 +1,12 @@
+import os
+import sys
 import pytest
+import werkzeug
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from app import create_app, db
 from app.models import Article
-import werkzeug
 
 @pytest.fixture(autouse=True)
 def _ensure_version():
@@ -73,3 +78,27 @@ def test_api_create_article_invalid_numbers(client):
     data = resp.get_json()
     assert data['meme_potential'] is None
     assert data['reality_disruption'] is None
+
+
+def test_language_switch_to_russian(client):
+    resp = client.get('/?lang=ru')
+    assert resp.status_code == 200
+    body = resp.data.decode('utf-8')
+    assert 'Гениально-инвертированная Вики' in body
+
+    resp = client.get('/')
+    body = resp.data.decode('utf-8')
+    assert 'Гениально-инвертированная Вики' in body
+
+
+def test_language_switch_back_to_english(client):
+    client.get('/?lang=ru')
+
+    resp = client.get('/?lang=en')
+    assert resp.status_code == 200
+    body = resp.data.decode('utf-8')
+    assert 'Genius Inverted Wiki' in body
+
+    resp = client.get('/')
+    body = resp.data.decode('utf-8')
+    assert 'Genius Inverted Wiki' in body

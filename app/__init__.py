@@ -17,7 +17,8 @@ def create_app(test_config=None):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.secret_key = 'change-me'
     app.config.setdefault('BABEL_DEFAULT_LOCALE', 'en')
-    app.config.setdefault('BABEL_TRANSLATION_DIRECTORIES', 'translations')
+    default_trans_dir = Path(__file__).resolve().parent.parent / 'translations'
+    app.config.setdefault('BABEL_TRANSLATION_DIRECTORIES', str(default_trans_dir))
 
     trans_dir = app.config['BABEL_TRANSLATION_DIRECTORIES']
     po_files = list(Path(trans_dir).rglob('*.po'))
