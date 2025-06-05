@@ -1,5 +1,6 @@
 from flask import Flask, request, session
 from flask_babel import Babel
+from flasgger import Swagger
 from pathlib import Path
 import subprocess
 from flask_sqlalchemy import SQLAlchemy
@@ -30,6 +31,7 @@ def create_app(test_config=None):
 
     db.init_app(app)
     migrate.init_app(app, db)
+    Swagger(app, config={"specs_route": "/swagger"}, merge=True)
 
     def get_locale() -> str:
         lang = request.args.get('lang')
