@@ -6,16 +6,52 @@ bp = Blueprint('api', __name__)
 
 @bp.route('/articles')
 def list_articles():
+    """List all articles
+    ---
+    responses:
+      200:
+        description: Returns a list of articles
+    """
     articles = Article.query.all()
     return jsonify([serialize_article(a) for a in articles])
 
 @bp.route('/articles/<int:article_id>')
 def get_article(article_id):
+    """Retrieve an article by id
+    ---
+    parameters:
+      - name: article_id
+        in: path
+        type: integer
+        required: true
+    responses:
+      200:
+        description: The requested article
+    """
     article = Article.query.get_or_404(article_id)
     return jsonify(serialize_article(article))
 
 @bp.route('/articles', methods=['POST'])
 def create_article():
+    """Create a new article
+    ---
+    consumes:
+      - application/json
+    parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+            content:
+              type: string
+    responses:
+      201:
+        description: Article created
+    """
     data = request.get_json()
     if not data or 'title' not in data or 'content' not in data:
         abort(400)
