@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ article.title }}</h1>
+<div>{{ article.content|safe }}</div>
+<p><a href="/article/{{ article.id }}/edit">Edit</a></p>
+<h3>Characteristics</h3>
+<ul>
+<li>Loss Index: {{ article.loss_index }}</li>
+<li>Meme Potential: {{ article.meme_potential }}</li>
+<li>Reality Disruption: {{ article.reality_disruption }}</li>
+<li>Legal Risk: {{ article.legal_risk }}</li>
+<li>Ethical Toxicity: {{ article.ethical_toxicity }}</li>
+<li>Scalability: {{ article.scalability }}</li>
+<li>User Retention: {{ article.user_retention }}</li>
+<li>Implementation Cost: {{ article.implementation_cost }}</li>
+<li>Side Effect Index: {{ article.side_effect_index }}</li>
+<li>Inverse Genius Rating: {{ article.inverse_genius_rating }}</li>
+</ul>
+<h3>Versions</h3>
+<ul>
+{% for v in versions %}
+    <li>Version {{ v.version }} - {{ v.created_at }}<pre>{{ v.content }}</pre></li>
+{% endfor %}
+</ul>
+{% endblock %}
