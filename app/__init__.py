@@ -22,7 +22,7 @@ def create_app(test_config=None):
     trans_dir = app.config['BABEL_TRANSLATION_DIRECTORIES']
     po_files = list(Path(trans_dir).rglob('*.po'))
     if po_files:
-        subprocess.run(['pybabel', 'compile', '-d', trans_dir, '-q'], check=False)
+        subprocess.run(['pybabel', 'compile', '-d', trans_dir], check=False)
 
     if test_config:
         app.config.update(test_config)
