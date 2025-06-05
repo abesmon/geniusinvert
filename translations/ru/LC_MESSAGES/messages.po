@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Language: ru\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Genius Inverted Wiki"
+msgstr "Гениально-инвертированная Вики"
+
+msgid "Home"
+msgstr "Главная"
+
+msgid "New Article"
+msgstr "Новая статья"
+
+msgid "Random article:"
+msgstr "Случайная статья:"
+
+msgid "Latest Articles"
+msgstr "Последние статьи"
+
+msgid "No articles yet"
+msgstr "Статей пока нет"
+
+msgid "Edit"
+msgstr "Править"
+
+msgid "New"
+msgstr "Новая"
+
+msgid "Article"
+msgstr "статья"
+
+msgid "Title"
+msgstr "Название"
+
+msgid "Content"
+msgstr "Содержание"
+
+msgid "Loss Index"
+msgstr "Индекс потерь"
+
+msgid "Meme Potential"
+msgstr "Потенциал мема"
+
+msgid "Reality Disruption"
+msgstr "Нарушение реальности"
+
+msgid "Legal Risk"
+msgstr "Юридический риск"
+
+msgid "Ethical Toxicity"
+msgstr "Этическая токсичность"
+
+msgid "Scalability"
+msgstr "Масштабируемость"
+
+msgid "User Retention"
+msgstr "Удержание пользователей"
+
+msgid "Implementation Cost"
+msgstr "Стоимость внедрения"
+
+msgid "Side Effect Index"
+msgstr "Индекс побочных эффектов"
+
+msgid "Inverse Genius Rating"
+msgstr "Рейтинг инверсии гениальности"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Characteristics"
+msgstr "Характеристики"
+
+msgid "Versions"
+msgstr "Версии"
+
+msgid "Version"
+msgstr "Версия"

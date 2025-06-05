@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Genius Inverted Wiki</h1>
+<h1>{{ _('Genius Inverted Wiki') }}</h1>
 {% if random_article %}
-<p><strong>Random article:</strong> <a href="/article/{{ random_article.id }}">{{ random_article.title }}</a></p>
+<p><strong>{{ _('Random article:') }}</strong> <a href="/article/{{ random_article.id }}">{{ random_article.title }}</a></p>
 {% endif %}
-<h2>Latest Articles</h2>
+<h2>{{ _('Latest Articles') }}</h2>
 <ul>
 {% for art in articles %}
     <li><a href="/article/{{ art.id }}">{{ art.title }}</a></li>
 {% else %}
-    <li>No articles yet</li>
+    <li>{{ _('No articles yet') }}</li>
 {% endfor %}
 </ul>
 {% endblock %}
