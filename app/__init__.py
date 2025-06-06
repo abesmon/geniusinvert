@@ -1,4 +1,6 @@
 from flask import Flask, request, session
+from markupsafe import Markup
+import markdown
 from flask_babel import Babel
 from flasgger import Swagger
 from pathlib import Path
@@ -32,6 +34,13 @@ def create_app(test_config=None):
     db.init_app(app)
     migrate.init_app(app, db)
     Swagger(app, config={"specs_route": "/swagger"}, merge=True)
+
+    @app.template_filter('markdown')
+    def markdown_filter(text: str) -> Markup:
+        """Render Markdown text into HTML for templates."""
+        if text is None:
+            return Markup("")
+        return Markup(markdown.markdown(text))
 
     def get_locale() -> str:
         lang = request.args.get('lang')

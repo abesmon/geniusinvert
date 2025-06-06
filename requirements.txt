@@ -3,3 +3,4 @@ Flask-SQLAlchemy==3.0.3
 Flask-Migrate==4.0.4
 Flask-Babel==3.1.0
 flasgger==0.9.7.1
+Markdown==3.5.1

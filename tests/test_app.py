@@ -122,3 +122,18 @@ def test_list_articles_and_filter(client):
     assert 'Alpha' in body
     assert 'Banana' not in body
 
+
+def test_markdown_rendering(client):
+    md_content = '# Header\n\n**bold** text'
+    resp = client.post('/article/new', data={'title': 'MD', 'content': md_content})
+    assert resp.status_code == 302
+    with client.application.app_context():
+        article = Article.query.first()
+        assert article.content == md_content
+
+    resp = client.get(f'/article/1')
+    assert resp.status_code == 200
+    body = resp.data.decode('utf-8')
+    assert '<h1>Header</h1>' in body
+    assert '<strong>bold</strong>' in body
+

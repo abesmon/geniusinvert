@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>{{ article.title }}</h1>
-<div>{{ article.content|safe }}</div>
+<div>{{ article.content|markdown }}</div>
 <p><a href="/article/{{ article.id }}/edit">{{ _('Edit') }}</a></p>
 <h3>{{ _('Characteristics') }}</h3>
 <ul>
@@ -19,7 +19,7 @@
 <h3>{{ _('Versions') }}</h3>
 <ul>
 {% for v in versions %}
-    <li>{{ _('Version') }} {{ v.version }} - {{ v.created_at }}<pre>{{ v.content }}</pre></li>
+    <li>{{ _('Version') }} {{ v.version }} - {{ v.created_at }}<div>{{ v.content|markdown }}</div></li>
 {% endfor %}
 </ul>
 {% endblock %}
