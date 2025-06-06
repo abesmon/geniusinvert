@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+{% endblock %}
 {% block content %}
 <h1>{% if article.id %}{{ _('Edit') }}{% else %}{{ _('New') }}{% endif %} {{ _('Article') }}</h1>
 <form method="post">
@@ -23,4 +27,11 @@
     <div class="mb-3"><label class="form-label">{{ _('Inverse Genius Rating') }}</label><input class="form-control" name="inverse_genius_rating" value="{{ article.inverse_genius_rating }}"></div>
     <button class="btn btn-primary" type="submit">{{ _('Save') }}</button>
 </form>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+<script>
+  new EasyMDE({ element: document.querySelector('textarea[name="content"]') });
+</script>
 {% endblock %}
