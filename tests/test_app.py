@@ -102,3 +102,23 @@ def test_language_switch_back_to_english(client):
     resp = client.get('/')
     body = resp.data.decode('utf-8')
     assert 'Genius Inverted Wiki' in body
+
+
+def test_list_articles_and_filter(client):
+    titles = ['Alpha', 'Banana', 'Груша', '1Test']
+    with client.application.app_context():
+        for t in titles:
+            db.session.add(Article(title=t, content='c'))
+        db.session.commit()
+
+    resp = client.get('/articles')
+    assert resp.status_code == 200
+    body = resp.data.decode('utf-8')
+    assert 'Alpha' in body
+    assert 'Banana' in body
+
+    resp = client.get('/articles?letter=A')
+    body = resp.data.decode('utf-8')
+    assert 'Alpha' in body
+    assert 'Banana' not in body
+
