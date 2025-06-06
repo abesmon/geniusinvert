@@ -12,6 +12,9 @@ msgstr "Главная"
 msgid "New Article"
 msgstr "Новая статья"
 
+msgid "All Articles"
+msgstr "Все статьи"
+
 msgid "Random article:"
 msgstr "Случайная статья:"
 

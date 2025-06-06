@@ -12,6 +12,9 @@ msgstr "Home"
 msgid "New Article"
 msgstr "New Article"
 
+msgid "All Articles"
+msgstr "All Articles"
+
 msgid "Random article:"
 msgstr "Random article:"
 

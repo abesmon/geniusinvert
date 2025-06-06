@@ -1,5 +1,6 @@
 import random
 from flask import Blueprint, render_template, request, redirect, url_for
+from math import ceil
 from . import db
 from .models import Article, ArticleVersion
 
@@ -13,6 +14,36 @@ def index():
     if count:
         random_article = Article.query.offset(random.randrange(count)).first()
     return render_template('index.html', articles=articles, random_article=random_article)
+
+
+@bp.route('/articles')
+def list_articles():
+    per_page = 10
+    page = request.args.get('page', 1, type=int)
+    letter = request.args.get('letter')
+    query = Article.query
+    if letter:
+        query = query.filter(Article.title.ilike(f'{letter}%'))
+    total = query.count()
+    articles = query.order_by(Article.title).offset((page - 1) * per_page).limit(per_page).all()
+    total_pages = ceil(total / per_page) if total else 1
+
+    cyrillic = [chr(c) for c in range(ord('А'), ord('Я') + 1)]
+    if 'Ё' not in cyrillic:
+        cyrillic.insert(6, 'Ё')
+    latin = [chr(c) for c in range(ord('A'), ord('Z') + 1)]
+    digits = [str(d) for d in range(10)]
+
+    alphabet_rows = [cyrillic, latin, digits]
+
+    return render_template(
+        'articles.html',
+        articles=articles,
+        page=page,
+        total_pages=total_pages,
+        letter=letter,
+        alphabet_rows=alphabet_rows,
+    )
 
 @bp.route('/article/<int:article_id>')
 def view_article(article_id):

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ _('All Articles') }}</h1>
+<div class="mb-2">
+  {% for row in alphabet_rows %}
+  <div>
+    {% for ch in row %}
+      <a href="{{ url_for('web.list_articles', letter=ch) }}">{{ ch }}</a>
+      {% if not loop.last %}|{% endif %}
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+<hr>
+<div class="text-end mb-2">
+  {% if page > 1 %}
+    <a href="{{ url_for('web.list_articles', page=page-1, letter=letter) }}">&laquo; Prev</a>
+  {% endif %}
+  <span> {{ page }} / {{ total_pages }} </span>
+  {% if page < total_pages %}
+    <a href="{{ url_for('web.list_articles', page=page+1, letter=letter) }}">Next &raquo;</a>
+  {% endif %}
+</div>
+<ul>
+{% for art in articles %}
+  <li><a href="/article/{{ art.id }}">{{ art.title }}</a></li>
+{% endfor %}
+</ul>
+<div class="text-end mt-2">
+  {% if page > 1 %}
+    <a href="{{ url_for('web.list_articles', page=page-1, letter=letter) }}">&laquo; Prev</a>
+  {% endif %}
+  <span> {{ page }} / {{ total_pages }} </span>
+  {% if page < total_pages %}
+    <a href="{{ url_for('web.list_articles', page=page+1, letter=letter) }}">Next &raquo;</a>
+  {% endif %}
+</div>
+{% endblock %}
